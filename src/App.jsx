@@ -3,16 +3,19 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Body from './components/Body';
 import Login from './components/Login';
-import Register from './components/Register';
+import Movie from './components/Movie';
+
 
 const App = () => {
     return (
       <Router>
+        <Header/>
         <Routes>
-        <Route path='/' element={<Header/>}/>
-        <Route path='/body' element={<Body/>}/>
+        <Route path='/' element={<Body/>}/>
         <Route path='/login' element={<Login/>}/>
-        <Route path='/register' element={<Register/>}/>
+        <Route path='/movie' element={<Movie/>}/>
+       
+        
 
 
 
