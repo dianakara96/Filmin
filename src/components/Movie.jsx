@@ -1,7 +1,6 @@
 
-
-
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function Movie() {
     const [nowPlayingList, setNowPlayingList] = useState([]);
@@ -15,8 +14,7 @@ function Movie() {
         .then(json => setNowPlayingList(json.results))
         .catch(error => console.error('Error fetching now playing movies:', error));
     };
-
-    const getPopularMovies = () => {
+    const getPopularMovies = () => { 
         fetch('https://api.themoviedb.org/3/movie/popular?api_key=5449a9116f453d752c707b1ca27812a4')
         .then(res => res.json())
         .then(json => setPopularList(json.results))
@@ -37,11 +35,15 @@ function Movie() {
         .catch(error => console.error('Error fetching upcoming movies:', error));
     };
 
+
+
+
     useEffect(() => {
         getNowPlayingMovies();
         getPopularMovies();
         getTopRatedMovies();
         getUpcomingMovies();
+        
     }, []);
 
     return (
@@ -49,34 +51,41 @@ function Movie() {
             <h2 className="text-white text-bold text-3xl py-1">Now Playing</h2>
             <div className="movies flex overflow-x-auto no-scrollbar cursor-pointer">
                 {nowPlayingList.map((movie) => (
-                    <img className="w-40" key={movie.id} src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
+                     <Link to={`/trailer/${movie.id}`} key={movie.id}>
+                     <img className=" rounded-md shadow-md mr-4" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
+                 </Link>
                 ))}
             </div>
+            
 
-            <h2 className="text-white text-bold text-3xl ">Popular</h2>
+            <h2 className="text-white text-bold text-3xl">Popular</h2>
             <div className="movies flex overflow-x-auto no-scrollbar cursor-pointer">
                 {popularList.map((movie) => (
-                    <img className="w-40" key={movie.id} src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
+                    <img className="w-40" key={movie.id} src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} onClick={() => fetchMovieTrailers(movie.id, "popular")} />
+                   
                 ))}
             </div>
+            
 
             <h2 className="text-white text-bold text-3xl">Top Rated</h2>
             <div className="movies flex overflow-x-auto no-scrollbar cursor-pointer">
                 {topRatedList.map((movie) => (
-                    <img className="w-40" key={movie.id} src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
+                    <img className="w-40" key={movie.id} src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} onClick={() => fetchMovieTrailers(movie.id, "top rated")} />
                 ))}
             </div>
 
             <h2 className="text-white text-bold text-3xl">Upcoming</h2>
             <div className="movies flex overflow-x-auto no-scrollbar cursor-pointer">
                 {upcomingList.map((movie) => (
-                    <img className="w-40" key={movie.id} src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
+                    <img className="w-40" key={movie.id} src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} onClick={() => fetchMovieTrailers(movie.id, "upcoming")} />
                 ))}
             </div>
+           
+           
+
+
         </div>
     );
 }
 
 export default Movie;
-
-
