@@ -19,7 +19,7 @@ const Body = () => {
 
              </div>
              <div>
-                <h1 className="text-3xl text-white">Now Playing</h1>
+                <h1 className="text-3xl text-white"></h1>
              </div>
              <div className="flex items center">
                 <Movie/>
