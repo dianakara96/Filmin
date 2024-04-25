@@ -4,7 +4,6 @@ import Header from "./components/Header";
 import Body from './components/Body';
 import Login from './components/Login';
 import Movie from './components/Movie';
-import Card from './components/Card';
 import Search from './components/Search';
 import Trailer from './components/Trailer';
 
@@ -18,7 +17,6 @@ const App = () => {
         <Route path='/' element={<Body/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/movie' element={<Movie/>}/>
-        <Route path='/card' element={<Card/>}/>
         <Route path='/search' element={<Search/>}/>
         <Route path='/trailer/:movieId' element={<Trailer/>}/>
         </Routes>

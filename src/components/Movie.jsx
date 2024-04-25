@@ -47,21 +47,25 @@ function Movie() {
     }, []);
 
     return (
-        <div className="flex flex-col items-center">
+        <div className=" items-center">
             <h2 className="text-white text-bold text-3xl py-1">Now Playing</h2>
-            <div className="movies flex overflow-x-auto no-scrollbar cursor-pointer">
+            <div className=" flex overflow-x-auto no-scrollbar cursor-pointer ">
+                
                 {nowPlayingList.map((movie) => (
-                     <Link to={`/trailer/${movie.id}`} key={movie.id}>
-                     <img className=" rounded-md shadow-md mr-4" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
+                     <Link to={`/trailer/${movie.id}`} key={movie.id} className=" mr-4">
+                     <img className=" flex overflow-x-auto no-scrollbar cursor-pointer" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
                  </Link>
                 ))}
             </div>
+            
             
 
             <h2 className="text-white text-bold text-3xl">Popular</h2>
             <div className="movies flex overflow-x-auto no-scrollbar cursor-pointer">
                 {popularList.map((movie) => (
-                    <img className="w-40" key={movie.id} src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} onClick={() => fetchMovieTrailers(movie.id, "popular")} />
+                     <Link to={`/trailer/${movie.id}`} key={movie.id} className=" mr-4">
+                     <img className="w-50 h-auto rounded-md shadow-md" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
+                 </Link>
                    
                 ))}
             </div>
@@ -70,14 +74,18 @@ function Movie() {
             <h2 className="text-white text-bold text-3xl">Top Rated</h2>
             <div className="movies flex overflow-x-auto no-scrollbar cursor-pointer">
                 {topRatedList.map((movie) => (
-                    <img className="w-40" key={movie.id} src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} onClick={() => fetchMovieTrailers(movie.id, "top rated")} />
+                     <Link to={`/trailer/${movie.id}`} key={movie.id} className=" mr-4">
+                     <img className="w-50 h-auto rounded-md shadow-md" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
+                 </Link>
                 ))}
             </div>
 
             <h2 className="text-white text-bold text-3xl">Upcoming</h2>
             <div className="movies flex overflow-x-auto no-scrollbar cursor-pointer">
                 {upcomingList.map((movie) => (
-                    <img className="w-40" key={movie.id} src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} onClick={() => fetchMovieTrailers(movie.id, "upcoming")} />
+                     <Link to={`/trailer/${movie.id}`} key={movie.id} className=" mr-4">
+                     <img className="w-50 h-auto rounded-md shadow-md" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
+                 </Link>
                 ))}
             </div>
            
