@@ -45,55 +45,64 @@ function Movie() {
         getUpcomingMovies();
         
     }, []);
+    
+return (
+  <div className="container mx-auto px-4 py-8">  {/* Added container and paddings */}
+    <h2 className="text-white text-bold text-4xl font-bold py-1">Now Playing</h2>
+    <div className="grid grid-cols-5 gap-4 sm:grid-cols-2 md:grid-cols-5">  {/* Added media queries for responsiveness */}
+      {nowPlayingList.map((movie) => (
+        <Link to={`/trailer/${movie.id}`} key={movie.id} className="">
+          <img
+            className="rounded-md shadow-md h-auto w-full object-cover"
+            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            alt={movie.title}
+          />
+        </Link>
+      ))}
+    </div>
+    <h2 className="text-white text-bold text-4xl font-bold py-1">Popular</h2>
+    <div className="grid grid-cols-5 gap-4 sm:grid-cols-2 md:grid-cols-5">
+      {popularList.map((movie) => (
+        <Link to={`/trailer/${movie.id}`} key={movie.id} className="">
+          <img
+            className="rounded-md shadow-md h-auto w-full object-cover"
+            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            alt={movie.title}
+          />
+        </Link>
+      ))}
+    </div>
+    <h2 className="text-white text-bold text-4xl py-1 font-bold">Top Rated</h2>
+    <div className="grid grid-cols-5 gap-4 sm:grid-cols-2 md:grid-cols-5">
+      {topRatedList.map((movie) => (
+        <Link to={`/trailer/${movie.id}`} key={movie.id} className="">
+          <img
+            className="rounded-md shadow-md h-auto w-full object-cover"
+            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            alt={movie.title}
+          />
+        </Link>
+      ))}
+    </div>
+    <h2 className="text-white text-bold text-4xl py-1 font-bold">Upcoming</h2>
+    <div className="grid grid-cols-5 gap-4 sm:grid-cols-2 md:grid-cols-5">
+      {upcomingList.map((movie) => (
+        <Link to={`/trailer/${movie.id}`} key={movie.id} className="">
+          <img
+            className="rounded-md shadow-md h-auto w-full object-cover"
+            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            alt={movie.title}
+          />
+        </Link>
+      ))}
+    </div>
+  </div>
+);
+}     
 
-    return (
-        <div className=" items-center">
-            <h2 className="text-white text-bold text-3xl py-1">Now Playing</h2>
-            <div className=" flex overflow-x-auto no-scrollbar cursor-pointer ">
-                
-                {nowPlayingList.map((movie) => (
-                     <Link to={`/trailer/${movie.id}`} key={movie.id} className=" mr-4">
-                     <img className=" flex overflow-x-auto no-scrollbar cursor-pointer" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
-                 </Link>
-                ))}
-            </div>
-            
-            
-
-            <h2 className="text-white text-bold text-3xl">Popular</h2>
-            <div className="movies flex overflow-x-auto no-scrollbar cursor-pointer">
-                {popularList.map((movie) => (
-                     <Link to={`/trailer/${movie.id}`} key={movie.id} className=" mr-4">
-                     <img className="w-50 h-auto rounded-md shadow-md" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
-                 </Link>
-                   
-                ))}
-            </div>
-            
-
-            <h2 className="text-white text-bold text-3xl">Top Rated</h2>
-            <div className="movies flex overflow-x-auto no-scrollbar cursor-pointer">
-                {topRatedList.map((movie) => (
-                     <Link to={`/trailer/${movie.id}`} key={movie.id} className=" mr-4">
-                     <img className="w-50 h-auto rounded-md shadow-md" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
-                 </Link>
-                ))}
-            </div>
-
-            <h2 className="text-white text-bold text-3xl">Upcoming</h2>
-            <div className="movies flex overflow-x-auto no-scrollbar cursor-pointer">
-                {upcomingList.map((movie) => (
-                     <Link to={`/trailer/${movie.id}`} key={movie.id} className=" mr-4">
-                     <img className="w-50 h-auto rounded-md shadow-md" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
-                 </Link>
-                ))}
-            </div>
-           
-           
-
-
-        </div>
-    );
-}
+ 
+      
+        
+      
 
 export default Movie;

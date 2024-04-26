@@ -6,6 +6,8 @@ import Login from './components/Login';
 import Movie from './components/Movie';
 import Search from './components/Search';
 import Trailer from './components/Trailer';
+import Footer from './components/Footer';
+
 
 
 
@@ -20,6 +22,7 @@ const App = () => {
         <Route path='/search' element={<Search/>}/>
         <Route path='/trailer/:movieId' element={<Trailer/>}/>
         </Routes>
+        <Footer/>
       </Router>
       
     )
