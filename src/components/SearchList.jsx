@@ -11,7 +11,7 @@ const SearchList = ({ movies }) => {
                         <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} className="w-full h-64 object-cover" />
                         <div className="p-4">
                             <h3 className="text-lg font-semibold mb-2">{movie.title}</h3>
-                            <p className="text-gray-700">{movie.overview}</p>
+                            <p className="text-white">{movie.overview}</p>
                         </div>
                     </div>
                 ))}
