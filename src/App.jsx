@@ -24,6 +24,9 @@ const App = () => {
         <Route path='/trailer/:movieId' element={<Trailer/>}/>
         <Route  path="/Watchlater" element={<WatchLater />} />
         </Routes>
+
+
+        
       <Footer/>
       </Router>
     

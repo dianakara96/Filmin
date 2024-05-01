@@ -3,8 +3,8 @@
 import React from 'react';
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 py-4">
-      <div className="container mx-auto text-center text-gray-400">
+    <footer className="bg-gray-800 py-4 fixed bottom-0 w-full h-10">
+      <div className="container mx-auto text-center text-gray-400 ">
         <p>&copy; 2024 FILMiN. All rights reserved.</p>
         <div className="mt-2">
           <p>Designed  by [Diana Kara]</p>

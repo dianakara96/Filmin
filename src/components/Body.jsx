@@ -14,7 +14,7 @@ const Body = () => {
              <p>This is a 2022 Australian TV show that follows Amerie Wadia and her chaotic high school experience at Hartley High</p>
                 <button className="flex items-center px-6 py-2 bg-white text-black rounded-md hover:bg-opacity-80">
                     <FaPlay/>
-                   <span>Play</span> 
+                   <span>Play</span>
                 </button>
 
              </div>

@@ -1,3 +1,5 @@
+
+
 import React, { useEffect, useState } from "react";
 
 function Watchlist() {
@@ -10,8 +12,27 @@ function Watchlist() {
     const loadWatchLaterList = () => {
         const storedList = localStorage.getItem("watchLaterList");
         if (storedList) {
-            setWatchLaterList(JSON.parse(storedList));
+            const list = JSON.parse(storedList);
+            const promises = list.map(movie => fetchTrailerKey(movie.id));
+            Promise.all(promises)
+                .then(trailerKeys => {
+                    const updatedList = list.map((movie, index) => ({
+                        ...movie,
+                        trailerKey: trailerKeys[index]
+                    }));
+                    setWatchLaterList(updatedList);
+                })
+                .catch(error => console.error('Error fetching trailer keys:', error));
         }
+    };
+
+    const fetchTrailerKey = (movieId) => {
+        return fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=5449a9116f453d752c707b1ca27812a4`)
+            .then(res => res.json())
+            .then(json => {
+                const key = json.results.length > 0 ? json.results[0].key : null;
+                return key;
+            });
     };
 
     const removeFromWatchLater = (movieId) => {
@@ -31,6 +52,17 @@ function Watchlist() {
                             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                             alt={movie.title}
                         />
+                        {movie.trailerKey && (
+                            <iframe
+                                width="280"
+                                height="160"
+                                src={`https://www.youtube.com/embed/${movie.trailerKey}`}
+                                title="YouTube video player"
+                                frameBorder='0'
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                            ></iframe>
+                        )}
                         <button onClick={() => removeFromWatchLater(movie.id)} className="mt-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
                             Remove from Watch Later
                         </button>
@@ -42,3 +74,4 @@ function Watchlist() {
 }
 
 export default Watchlist;
+
