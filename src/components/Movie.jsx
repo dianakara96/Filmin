@@ -57,15 +57,15 @@ function Movie() {
     }, []);
     
     return (
-        <div className="container mx-auto px-4 py-8">  
-            <h2 className="text-white text-bold text-4xl font-bold py-1">Now Playing</h2>
-            <div className="grid grid-cols-5 gap-4 sm:grid-cols-2 md:grid-cols-5">  
+        <div className="container mx-auto px-20 py-20 ">  
+            <h2 className="text-white text-bold text-4xl font-bold py-1 ">Now Playing</h2>
+            <div className="grid lg:grid-cols-3 gap-4 sm:grid-cols-1 md:grid-cols-2">  
                 {nowPlayingList.map((movie) => (
                     <div key={movie.id} className="">
                         <Link to={`/trailer/${movie.id}`} className="">
                             <img
                                 className="rounded-md shadow-md h-auto w-full object-cover"
-                                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                                src={`https://image.tmdb.org/t/p/w400${movie.poster_path}`}
                                 alt={movie.title}
                             />
                         </Link>
@@ -77,7 +77,7 @@ function Movie() {
             </div>
 
             <h2 className="text-white text-bold text-4xl font-bold py-1">Popular</h2>
-            <div className="grid grid-cols-5 gap-4 sm:grid-cols-2 md:grid-cols-5">  
+            <div className="grid lg:grid-cols-3 gap-4 sm:grid-cols-1 md:grid-cols-2">  
                 {popularList.map((movie) => (
                     <div key={movie.id} className="">
                         <Link to={`/trailer/${movie.id}`} className="">
@@ -95,7 +95,7 @@ function Movie() {
             </div>
 
             <h2 className="text-white text-bold text-4xl font-bold py-1">Top Rated</h2>
-            <div className="grid grid-cols-5 gap-4 sm:grid-cols-2 md:grid-cols-5">  
+            <div className="grid lg:grid-cols-3 gap-4 sm:grid-cols-1 md:grid-cols-2">  
                 {topRatedList.map((movie) => (
                     <div key={movie.id} className="">
                         <Link to={`/trailer/${movie.id}`} className="">
@@ -113,7 +113,7 @@ function Movie() {
             </div>
 
             <h2 className="text-white text-bold text-4xl font-bold py-1">Upcoming</h2>
-            <div className="grid grid-cols-5 gap-4 sm:grid-cols-2 md:grid-cols-5">  
+            <div className="grid lg:grid-cols-3 gap-4 sm:grid-cols-1 md:grid-cols-2">  
                 {upcomingList.map((movie) => (
                     <div key={movie.id} className="">
                         <Link to={`/trailer/${movie.id}`} className="">
